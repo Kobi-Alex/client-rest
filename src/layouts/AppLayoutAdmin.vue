@@ -9,6 +9,7 @@
         >PROUD</span
       >
     </div>
+
     <ul class="nav-links">
       <li
         v-if="isVisibleHandle(['Admin', 'Manager', 'Teacher'])"
@@ -163,7 +164,6 @@
       </i>
       <div>
         <h6>User: {{ currentUser.email}} </h6>
-        <h6>Role: {{currentUser.roles}}</h6>
       </div>
     </div>
     <div class="container">
@@ -237,7 +237,7 @@ export default {
 <style scopped>
 
 .c-background {
-  background: rgba(0, 0, 0, 0.9);
+  background: #000000e6;
   /* background: #232427; */
 }
 
@@ -326,8 +326,8 @@ export default {
   align-items: center;
 }
 .sidebar .logo-details i {
-  color: rgb(184, 184, 184);
-  min-width: 78px;
+  color: #7a7a7a;
+  min-width: 70px;
   text-align: center;
 }
 .sidebar .logo-details .logo_name {
@@ -344,7 +344,7 @@ export default {
 }
 .sidebar .nav-links {
   height: 100%;
-  padding: 30px 0 150px 0;
+  padding: 10px 0 150px 0;
   overflow: auto;
 }
 .sidebar.close .nav-links {
@@ -368,7 +368,7 @@ export default {
   display: block;
 }
 .sidebar .nav-links li i {
-  height: 50px;
+  height: 45px;
   min-width: 70px;
   text-align: center;
   line-height: 50px;

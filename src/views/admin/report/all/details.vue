@@ -1,17 +1,20 @@
 <template>
   <div class="p-3">
-    <router-link :to="{ name: 'ReportsList' }" class="btn btn-outline-info">
+
+    <router-link :to="{ name: 'ReportsList' }" class="btn btn-outline-info mb-2">
       <i><font-awesome-icon icon="circle-arrow-left" /></i>
     </router-link>
+
     <div v-if="exam" class="mt-3">
       <h3 class="text-white">
         {{exam.title}}
       </h3>
       <hr class="bg-info" />
     </div>
+
     <div class="table-responsive custom-table-responsive">
-      <table class="table custom-table mt-5">
-        <thead class="table-dark">
+      <table class="table custom-table mt-4">
+        <thead class="table-dark ">
           <tr class="text-center">
             <th class="border border-dark" scope="col"></th>
             <template v-if="examQuestions">
@@ -85,13 +88,15 @@
         </tbody>
       </table>
     </div>
+
     <button
-      class="btn btn-outline-danger mt-3"
+      class="btn btn-outline-danger mt-4"
       @click="deleteHandle"
       :disabled="loading"
     >
       Delete
     </button>
+
     <div class="d-flex justify-content-center" v-if="!examQuestions">
       <div
         class="spinner-border align-center text-primary text-center"
@@ -100,6 +105,7 @@
         <span class="visually-hidden">Loading...</span>
       </div>
     </div>
+
   </div>
 </template>
 
