@@ -12,6 +12,16 @@
       <hr class="bg-info" />
     </div>
 
+    <div class="d-flex">
+      <h3 class="legends-style">Legends:</h3>
+      <div class="answer-style is-correct text-center">
+          <span>correct answer</span>
+      </div>
+      <div class="answer-style is-incorrect text-center">
+          <span>uncorrect answer</span>
+      </div>
+    </div>
+
     <div class="table-responsive custom-table-responsive">
       <table class="table custom-table mt-4">
         <thead class="table-dark ">
@@ -28,7 +38,8 @@
             <th class="border border-dark" scope="col">Date</th>
           </tr>
         </thead>
-        <tbody class="border border-dark">
+
+        <tbody class="border border-dark p-0">
           <tr class="text-center">
             <th class="border border-dark c-content" scope="col">Answer Key</th>
             <template v-if="answerKeys">
@@ -55,26 +66,29 @@
               <!-- <th class="border border-dark" v-for="qu in r.questionUnits" :key="qu.questionId" scope="row">{{qu.currentKeys}}</th> -->
               <!-- :class="r.questionUnits.find((x) => x.questionId === ak.idQ)
                     ?.currentKeys.includes(ak.charKey)? 'is-correct' : 'is-incorrect'" -->
+              
               <th
                 class="border border-dark"
                 v-for="ak in sortedAnswerKeys"
                 :key="ak.idQ"
                 scope="row"
-                :class="
+              >
+                <div class="cell-style"
+                 :class="
                   report.questionUnits
                     .find((x) => x.questionId === ak.idQ)
                     ?.currentKeys.split(',')
                     .sort()
                     .join('') === ak.charKey
-                    ? 'is-correct'
+                    ?   'is-correct'
                     : 'is-incorrect'
-                "
-              >
-                {{
-                  report.questionUnits
-                    .find((x) => x.questionId === ak.idQ)
-                    ?.currentKeys.replaceAll(",", "") || "-"
-                }}
+                ">
+                  {{
+                    report.questionUnits
+                      .find((x) => x.questionId === ak.idQ)
+                      ?.currentKeys.replaceAll(",", "") || "-"
+                  }}
+                </div>
               </th>
 
               <td class="border border-dark">{{ report.persentScore }}</td>
@@ -303,13 +317,30 @@ export default {
   min-width: max-content;
   white-space: nowrap;
 }
-
 .is-correct {
   background: darkgreen;
-  color: white;
 }
 .is-incorrect {
   background: darkred;
+}
+ .cell-style
+{
+  border: 2px solid #535353;
+  border-radius: 8px;
   color: white;
+} 
+.legends-style
+{
+  color: #737373;
+}
+.answer-style
+{
+  position: relative;
+  width: 160px;
+  margin-inline: 10px;
+  color:#fff;
+  padding: 5px;
+  border: 2px solid #535353;
+  border-radius: 6px;
 }
 </style>
