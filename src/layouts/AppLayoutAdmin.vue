@@ -2,7 +2,8 @@
   <div class="sidebar" :class="{ close: isClosedSideBar }">
     <div class="logo-details c-logo text-center">
       <i @click="$router.push({ name: 'HomeAdmin' })">
-        <font-awesome-icon icon="user-secret" class="fs-1"
+        <!-- <font-awesome-icon icon="user-secret" class="fs-1" -->
+        <font-awesome-icon icon="house"
       /></i>
       <span @click="$router.push({ name: 'HomeAdmin' })" class="logo_name fs-3"
         >PROUD</span
@@ -152,7 +153,7 @@
     </ul>
   </div>
   <section class="home-section body-background">
-    <div class="home-content c-background sticky-top text-white">
+    <div class="home-content c-background sticky-top text-white d-flex justify-content-between">
       <i
         class="mx-3 fs-4"
         style="cursor: pointer"
@@ -160,6 +161,10 @@
       >
         <font-awesome-icon icon="bars" />
       </i>
+      <div>
+        <h6>User: {{ currentUser.email}} </h6>
+        <h6>Role: {{currentUser.roles}}</h6>
+      </div>
     </div>
     <div class="container">
       <router-view></router-view>
@@ -223,22 +228,25 @@ export default {
       authFullName,
       logout,
       isVisibleHandle,
+      currentUser
     };
   },
 };
 </script>
 
 <style scopped>
+
 .c-background {
   background: rgba(0, 0, 0, 0.9);
+  /* background: #232427; */
 }
 
-.c-logo {
+/* .c-logo {
   -webkit-box-reflect: below -30px linear-gradient(transparent, #0004);
   color: #fff;
   text-shadow: 0 0 10px #03bcf4, 0 0 20px #03bcf4, 0 0 40px #03bcf4,
     0 0 80px #03bcf4, 0 0 160px #03bcf4, 0 0 400px #03bcf4;
-}
+} */
 
 /* .c-logo span {
   animation:  animate 5s linear infinite;
@@ -269,7 +277,7 @@ export default {
     0 0 80px #03bcf4, 0 0 160px #03bcf4, 0 0 400px #03bcf4; */
 
   /* background: darkcyan; */
-  background: #2b2b2b;
+  background: #4e4e4e;
 }
 /* Google Fonts Import Link */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
@@ -303,29 +311,27 @@ export default {
   height: 100%;
   width: 260px;
   /* background: #11101d; */
-  background: #191919;
+  background: #2f2f2f;
   z-index: 100;
   transition: all 0.5s ease;
 }
 .sidebar.close {
-  width: 78px;
+  width: 70px;
 }
 .sidebar .logo-details {
   height: 60px;
   width: 100%;
+  font-size: 30px;
   display: flex;
   align-items: center;
 }
 .sidebar .logo-details i {
-  font-size: 30px;
-  color: #fff;
-  height: 50px;
+  color: rgb(184, 184, 184);
   min-width: 78px;
   text-align: center;
-  line-height: 50px;
 }
 .sidebar .logo-details .logo_name {
-  font-size: 22px;
+  font-size: 10px;
   color: #fff;
   font-weight: 600;
   transition: 0.3s ease;
@@ -363,11 +369,11 @@ export default {
 }
 .sidebar .nav-links li i {
   height: 50px;
-  min-width: 78px;
+  min-width: 70px;
   text-align: center;
   line-height: 50px;
-  color: #fff;
-  font-size: 20px;
+  color: #16978f;
+  font-size: 21px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -397,7 +403,7 @@ export default {
   margin-top: -10px;
   /* background: #1d1b31; */
   /* background: darkcyan; */
-  background: #2b2b2b;
+  background: #2f2f2f;
   display: none;
 }
 
@@ -460,7 +466,7 @@ export default {
   align-items: center;
   justify-content: space-between;
   /* background: #1d1b31; */
-  background: #2b2b2b;
+  background: #2f2f2f;
   padding: 12px 0;
   transition: all 0.3s ease;
 }
@@ -468,7 +474,7 @@ export default {
   background: none;
 }
 .sidebar.close .profile-details {
-  width: 78px;
+  width: 70px;
 }
 .sidebar .profile-details .profile-content {
   display: flex;
@@ -509,8 +515,8 @@ export default {
   transition: all 0.5s ease;
 }
 .sidebar.close ~ .home-section {
-  left: 78px;
-  width: calc(100% - 78px);
+  left: 70px;
+  width: calc(100% - 70px);
 }
 .home-section .home-content {
   height: 60px;
